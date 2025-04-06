@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 import pandas as pd
 
 app = Flask(__name__)
@@ -17,7 +17,7 @@ def open():
     if serviece_key == 'asdf1234':
         df = pd.read_csv("./csv/df_sample.csv")
         result = df.to_dict(orient='records')
-        return result
+        return jsonify(result)
     else:
         return "Servicekey_error"
 
